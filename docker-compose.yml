@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: qwerty789
+      POSTGRES_DB: cleany_ro_db
+    ports:
+      - 5432:5432
+  app:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      PORT: 3001
+      SECRET: sdghtyhbadf
+      NODE_ENV: PRODUCTION
+    ports:
+      - 3001:3001

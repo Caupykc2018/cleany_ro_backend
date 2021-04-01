@@ -1,0 +1,57 @@
+{
+  "name": "cleany-ro-backend",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/index.ts",
+    "start:production": "NODE_ENV=PRODUCTION yarn start",
+    "start:develop": "docker-compose start -d db && NODE_ENV=DEVELOP yarn start",
+    "docker:down": "docker-compose down"
+  },
+  "_moduleAliases": {
+    "@config": "src/config",
+    "@controllers": "src/api/http/controllers",
+    "@errors": "src/errors",
+    "@services": "src/api/http/services",
+    "@routes": "src/api/http/routes",
+    "@validations": "src/validations",
+    "@utils": "src/utils",
+    "@models": "src/models",
+    "@middlewares": "src/api/http/middlewares"
+  },
+  "dependencies": {
+    "@types/jsonwebtoken": "^8.5.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-jwt": "^4.0.0",
+    "koa-parser": "^1.0.8",
+    "koa-router": "^10.0.0",
+    "module-alias": "^2.2.2",
+    "pg": "^8.5.1",
+    "typeorm": "^0.2.31"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/preset-typescript": "^7.13.0",
+    "@types/bcrypt": "^3.0.0",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/koa": "^2.13.1",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-jwt": "^3.3.0",
+    "@types/koa-router": "^7.4.1",
+    "@types/node": "^14.14.35",
+    "@types/yup": "^0.29.11",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "@zerollup/ts-transform-paths": "^1.7.18",
+    "eslint": "^7.22.0",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.3",
+    "yup": "^0.32.9"
+  }
+}
