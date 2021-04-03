@@ -8,6 +8,7 @@ import { User, RefreshToken } from "@models";
 import { HandledResponseError } from "@errors";
 import { createToken } from "@utils";
 import { expiresToken } from "@config";
+import { StatusCodes } from "http-status-codes";
 
 class AuthService {
   createAccessToken(idUser: number) {
@@ -25,13 +26,13 @@ class AuthService {
     const user = await User.findOne({where: { email }, relations: ['refreshToken']});
 
     if(!user) {
-      throw new HandledResponseError('Incorrect email or password', 422)
+      throw new HandledResponseError('Incorrect email or password', StatusCodes.UNPROCESSABLE_ENTITY)
     }
 
     const isMatch = await user.comparePassword(password);
 
     if(!isMatch) {
-      throw new HandledResponseError('Incorrect email or password', 422)
+      throw new HandledResponseError('Incorrect email or password', StatusCodes.UNPROCESSABLE_ENTITY)
     }
 
     user.refreshToken.refresh();

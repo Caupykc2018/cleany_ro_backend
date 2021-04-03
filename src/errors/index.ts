@@ -1,4 +1,5 @@
 import { ValidationError } from 'yup';
+import { StatusCodes } from 'http-status-codes';
 
 export class HandledResponseError<T> extends Error {
   isResponseError: boolean = true;
@@ -21,6 +22,6 @@ export class ValidationDataError extends HandledResponseError<{
         [path]: message,
       };
     }, {});
-    super(body, 422);
+    super(body, StatusCodes.UNPROCESSABLE_ENTITY);
   }
 }
