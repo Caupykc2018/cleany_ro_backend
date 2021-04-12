@@ -1,10 +1,11 @@
 import {
-  ILoginRouterContext, IRefreshingTokenContext,
+  ILoginRouterContext,
+  IRefreshingTokenContext,
   IRegisterRouterContext,
 } from '@interfaces/http/controllers/auth';
 import AuthService from '@services/auth';
 import handleError from '@errors/handle';
-import { StatusCodes } from "http-status-codes";
+import { StatusCodes } from 'http-status-codes';
 
 export const LogInController = async (ctx: ILoginRouterContext) => {
   try {
@@ -28,7 +29,9 @@ export const RegisterController = async (ctx: IRegisterRouterContext) => {
   }
 };
 
-export const RefreshingTokenController = async (ctx: IRefreshingTokenContext) => {
+export const RefreshingTokenController = async (
+  ctx: IRefreshingTokenContext
+) => {
   try {
     ctx.response.body = await AuthService.refreshingToken(ctx.request.body);
     ctx.response.status = StatusCodes.OK;
@@ -37,4 +40,4 @@ export const RefreshingTokenController = async (ctx: IRefreshingTokenContext) =>
     ctx.response.body = body;
     ctx.response.status = status;
   }
-}
+};

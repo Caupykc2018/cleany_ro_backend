@@ -1,5 +1,5 @@
 import { HandledResponseError } from '@errors';
-import {getReasonPhrase, StatusCodes} from "http-status-codes";
+import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 
 const handleError = <T extends HandledResponseError<any>>(error: T) => {
   if (error.isResponseError) {

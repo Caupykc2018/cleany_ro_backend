@@ -1,6 +1,6 @@
 import { IRouterContext, IMiddleware } from 'koa-router';
 import { Next } from 'koa';
-import { StatusCodes } from "http-status-codes";
+import { StatusCodes } from 'http-status-codes';
 
 const CorsMiddleware: IMiddleware = async (ctx: IRouterContext, next: Next) => {
   ctx.set('Access-Control-Allow-Origin', 'http://localhost:3000');

@@ -1,5 +1,9 @@
 import * as Router from 'koa-router';
-import { LogInController, RegisterController, RefreshingTokenController } from '@controllers/auth';
+import {
+  LogInController,
+  RegisterController,
+  RefreshingTokenController,
+} from '@controllers/auth';
 
 const router = new Router({
   prefix: '',

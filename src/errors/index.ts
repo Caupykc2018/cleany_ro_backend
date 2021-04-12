@@ -5,6 +5,7 @@ export class HandledResponseError<T> extends Error {
   isResponseError: boolean = true;
   body: T;
   status: number;
+
   constructor(body: T, status: number) {
     super('');
     this.body = body;

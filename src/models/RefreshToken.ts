@@ -7,19 +7,19 @@ import {
   OneToOne,
 } from 'typeorm';
 import User from '@models/User';
-import {createToken} from "@utils";
+import { createToken } from '@utils';
 
 @Entity()
 class RefreshToken extends BaseEntity {
-  @PrimaryGeneratedColumn({type: "int"})
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
-  @Column({type: 'varchar', unique: true, nullable: false})
+  @Column({ type: 'varchar', unique: true, nullable: false })
   token: string;
-  @OneToOne(() => User, user => user.refreshToken)
+  @OneToOne(() => User, (user) => user.refreshToken)
   user: User;
 
   refresh() {
-    this.token = createToken({date: new Date()});
+    this.token = createToken({ date: new Date() });
   }
 
   @BeforeInsert()

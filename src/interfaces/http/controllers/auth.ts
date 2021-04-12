@@ -18,6 +18,6 @@ export interface IRegisterRouterContext extends IRouterContextWithData {
 
 export interface IRefreshingTokenContext extends IRouterContextWithData {
   body: {
-    refreshToken: string
-  }
+    refreshToken: string;
+  };
 }

@@ -5,33 +5,34 @@ import {
   Column,
   OneToOne,
   JoinColumn,
-  BeforeInsert, OneToMany,
+  BeforeInsert,
+  OneToMany,
 } from 'typeorm';
 import RefreshToken from '@models/RefreshToken';
 import Stock from '@models/Stock';
 import Place from '@models/Place';
-import {compareHash, hash} from '@utils';
+import { compareHash, hash } from '@utils';
 
 @Entity()
 class User extends BaseEntity {
-  @PrimaryGeneratedColumn({type: 'int'})
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
-  @Column({type: 'varchar', unique: true, nullable: false})
+  @Column({ type: 'varchar', unique: true, nullable: false })
   email: string;
-  @Column({type: 'varchar', nullable: false})
+  @Column({ type: 'varchar', nullable: false })
   password: string;
-  @Column({type: 'varchar', nullable: false})
+  @Column({ type: 'varchar', nullable: false })
   name: string;
-  @Column({type: 'varchar', nullable: false})
+  @Column({ type: 'varchar', nullable: false })
   role: string;
-  @OneToOne(() => RefreshToken, refreshToken => refreshToken.user)
+  @OneToOne(() => RefreshToken, (refreshToken) => refreshToken.user)
   @JoinColumn()
   refreshToken: RefreshToken;
   @JoinColumn()
-  @OneToMany(() => Stock, stock => stock.user)
+  @OneToMany(() => Stock, (stock) => stock.user)
   stocks: Stock[];
   @JoinColumn()
-  @OneToMany(() => Place, place => place.user)
+  @OneToMany(() => Place, (place) => place.user)
   places: Place[];
 
   responseData() {
@@ -40,8 +41,8 @@ class User extends BaseEntity {
       email: this.email,
       name: this.name,
       role: this.role,
-      refreshToken: this.refreshToken?.token
-    }
+      refreshToken: this.refreshToken?.token,
+    };
   }
 
   async comparePassword(password) {

@@ -1,8 +1,12 @@
-import {ILogInData, IRefreshingTokenData, IRegisterData} from '@interfaces/http/services/auth';
+import {
+  ILogInData,
+  IRefreshingTokenData,
+  IRegisterData,
+} from '@interfaces/http/services/auth';
 import {
   logInDataSchema,
   registerSchema,
-  refreshingTokenSchema
+  refreshingTokenSchema,
 } from '@validations/schemas/http/services/auth';
 import { validateData } from '@validations/common';
 
@@ -12,5 +16,6 @@ export const validationLogInData = async (data: ILogInData) =>
 export const validationRegisterData = async (data: IRegisterData) =>
   await validateData(registerSchema, data);
 
-export const validationRefreshingTokenData = async (data: IRefreshingTokenData) =>
-  await validateData(refreshingTokenSchema, data);
+export const validationRefreshingTokenData = async (
+  data: IRefreshingTokenData
+) => await validateData(refreshingTokenSchema, data);
