@@ -54,5 +54,20 @@
     "prettier": "^2.2.1",
     "typescript": "^4.2.3",
     "yup": "^0.32.9"
+  },
+  "babel": {
+    "presets": ["@babel/preset-typescript"]
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
   }
 }
