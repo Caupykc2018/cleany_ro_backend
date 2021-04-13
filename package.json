@@ -18,7 +18,8 @@
     "@validations": "src/validations",
     "@utils": "src/utils",
     "@models": "src/models",
-    "@middlewares": "src/api/http/middlewares"
+    "@middlewares": "src/api/http/middlewares",
+    "@constants": "src/constants"
   },
   "dependencies": {
     "@types/jsonwebtoken": "^8.5.1",
