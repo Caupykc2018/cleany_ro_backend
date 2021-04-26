@@ -19,7 +19,8 @@
     "@utils": "src/utils",
     "@models": "src/models",
     "@middlewares": "src/api/http/middlewares",
-    "@constants": "src/constants"
+    "@constants": "src/constants",
+    "@decorators": "src/decorators"
   },
   "dependencies": {
     "@types/jsonwebtoken": "^8.5.1",

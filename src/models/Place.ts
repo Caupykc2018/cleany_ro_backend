@@ -14,8 +14,10 @@ import WorkPlace from '@models/WorkPlace';
 class Place extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
-  @Column({ type: 'varchar' })
-  address: string;
+  @Column({ type: 'decimal' })
+  latitude: number;
+  @Column({ type: 'decimal' })
+  longitude: number;
   @Column({ type: 'varchar' })
   type: string;
   @JoinColumn()

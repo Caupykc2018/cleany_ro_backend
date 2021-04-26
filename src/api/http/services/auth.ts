@@ -13,15 +13,15 @@ import { HandledResponseError } from '@errors';
 import { createToken } from '@utils';
 import { expiresToken } from '@config';
 import { StatusCodes } from 'http-status-codes';
+import { validation } from '@decorators';
 
 class AuthService {
   createAccessToken(idUser: number) {
     return createToken({ id: idUser }, expiresToken);
   }
 
+  @validation(validationLogInData)
   async logIn(data: ILogInData) {
-    await validationLogInData(data);
-
     const { email, password } = data;
 
     const user = await User.findOne({
@@ -54,9 +54,8 @@ class AuthService {
     };
   }
 
+  @validation(validationRegisterData)
   async register(data: IRegisterData) {
-    await validationRegisterData(data);
-
     const refreshToken = RefreshToken.create();
 
     await refreshToken.save();
@@ -74,9 +73,8 @@ class AuthService {
     };
   }
 
+  @validation(validationRefreshingTokenData)
   async refreshingToken(data: IRefreshingTokenData) {
-    await validationRefreshingTokenData(data);
-
     const { refreshToken } = data;
 
     const findRefreshToken = await RefreshToken.findOne({

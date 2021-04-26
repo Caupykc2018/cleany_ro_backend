@@ -20,7 +20,8 @@
       "@services/*": ["api/http/services/*"],
       "@utils": ["utils"],
       "@validations/*": ["validations/*"],
-      "@constants": ["constants"]
+      "@constants": ["constants"],
+      "@decorators": ["decorators"]
     }
   },
   "exclude": [

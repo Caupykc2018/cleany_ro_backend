@@ -1,13 +1,13 @@
-import { IRouterContextWithData } from '@interfaces/commons/contexts';
+import { Context } from 'koa';
 
-export interface ILoginRouterContext extends IRouterContextWithData {
+export interface ILoginRouterContext extends Context {
   body: {
     email: string;
     password: string;
   };
 }
 
-export interface IRegisterRouterContext extends IRouterContextWithData {
+export interface IRegisterRouterContext extends Context {
   body: {
     email: string;
     password: string;
@@ -16,7 +16,7 @@ export interface IRegisterRouterContext extends IRouterContextWithData {
   };
 }
 
-export interface IRefreshingTokenContext extends IRouterContextWithData {
+export interface IRefreshingTokenContext extends Context {
   body: {
     refreshToken: string;
   };
