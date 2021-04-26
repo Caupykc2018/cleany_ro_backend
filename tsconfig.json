@@ -19,7 +19,9 @@
       "@routes": ["api/http/routes"],
       "@services/*": ["api/http/services/*"],
       "@utils": ["utils"],
-      "@validations/*": ["validations/*"]
+      "@validations/*": ["validations/*"],
+      "@constants": ["constants"],
+      "@decorators": ["decorators"]
     }
   },
   "exclude": [

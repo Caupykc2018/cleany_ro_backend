@@ -1,11 +1,19 @@
-import User from './User';
-import Device from './Device';
-import RefreshToken from './RefreshToken';
+import User from '@models/User';
+import Device from '@models/Device';
+import RefreshToken from '@models/RefreshToken';
+import DeviceStock from '@models/DeviceStock';
+import Stock from '@models/Stock';
+import Place from '@models/Place';
+import WorkPlace from '@models/WorkPlace';
 
-export {
+export { User, Device, RefreshToken, DeviceStock, Stock, Place, WorkPlace };
+
+export const models = [
   User,
   Device,
-  RefreshToken
-};
-
-export const models = [ User, Device, RefreshToken ];
+  RefreshToken,
+  DeviceStock,
+  Stock,
+  Place,
+  WorkPlace,
+];

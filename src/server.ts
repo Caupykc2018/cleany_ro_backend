@@ -6,7 +6,7 @@ import { port } from '@config';
 import { initializeDatabase } from '@config/database';
 
 import { cors } from '@middlewares';
-import rootRouter from '@routes';
+import ApiRouter from '@controllers/api';
 
 export const bootstrap = async () => {
   await initializeDatabase();
@@ -15,8 +15,8 @@ export const bootstrap = async () => {
   app.use(cors);
   app.use(bodyParser());
 
-  app.use(rootRouter.routes());
-  app.use(rootRouter.allowedMethods());
+  app.use(ApiRouter.routes());
+  app.use(ApiRouter.allowedMethods());
 
   const server = createServer(app.callback());
 

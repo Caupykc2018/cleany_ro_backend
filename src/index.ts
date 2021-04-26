@@ -1,3 +1,3 @@
-import {startup} from "./server";
+import { startup } from './server';
 
-startup()
+startup();

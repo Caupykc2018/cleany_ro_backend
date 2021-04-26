@@ -1,39 +1,42 @@
 import {
-  ILoginRouterContext, IRefreshingTokenContext,
+  ILoginRouterContext,
+  IRefreshingTokenContext,
   IRegisterRouterContext,
 } from '@interfaces/http/controllers/auth';
 import AuthService from '@services/auth';
-import handleError from '@errors/handle';
+import Controller from '@controllers/controller';
+import { endpoint } from '@decorators';
+import { StatusCodes } from 'http-status-codes';
 
-export const LogInController = async (ctx: ILoginRouterContext) => {
-  try {
-    ctx.response.body = await AuthService.logIn(ctx.request.body);
-    ctx.response.status = 200;
-  } catch (e) {
-    const { body, status } = handleError(e);
-    ctx.response.body = body;
-    ctx.response.status = status;
+class AuthController extends Controller {
+  constructor() {
+    super();
+    this.setEndpoints([this.logIn, this.register, this.refreshingToken]);
   }
-};
 
-export const RegisterController = async (ctx: IRegisterRouterContext) => {
-  try {
-    ctx.response.body = await AuthService.register(ctx.request.body);
-    ctx.response.status = 200;
-  } catch (e) {
-    const { body, status } = handleError(e);
-    ctx.response.body = body;
-    ctx.response.status = status;
+  @endpoint({ statusCode: StatusCodes.OK, method: 'post', path: '/login' })
+  async logIn(ctx: ILoginRouterContext) {
+    return await AuthService.logIn(ctx.request.body);
   }
-};
 
-export const RefreshingTokenController = async (ctx: IRefreshingTokenContext) => {
-  try {
-    ctx.response.body = await AuthService.refreshingToken(ctx.request.body);
-    ctx.response.status = 200;
-  } catch (e) {
-    const { body, status } = handleError(e);
-    ctx.response.body = body;
-    ctx.response.status = status;
+  @endpoint({
+    statusCode: StatusCodes.CREATED,
+    method: 'post',
+    path: '/register',
+  })
+  async register(ctx: IRegisterRouterContext) {
+    return await AuthService.register(ctx.request.body);
+  }
+
+  @endpoint({
+    statusCode: StatusCodes.OK,
+    method: 'post',
+    path: '/refresh-token',
+  })
+  async refreshingToken(ctx: IRefreshingTokenContext) {
+    console.log('login');
+    return await AuthService.refreshingToken(ctx.request.body);
   }
 }
+
+export default new AuthController();

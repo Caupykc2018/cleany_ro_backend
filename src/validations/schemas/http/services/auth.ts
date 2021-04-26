@@ -19,5 +19,5 @@ export const registerSchema = object().shape({
 });
 
 export const refreshingTokenSchema = object().shape({
-  refreshToken: string().required('Refresh token is required')
-})
+  refreshToken: string().required('Refresh token is required'),
+});
